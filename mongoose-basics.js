@@ -1,23 +1,26 @@
 import mongoose from "mongoose";
 
-await mongoose.connect('mongodb+srv://sobaybay:c2ozgaZZKY1NdPfZ@cluster0.lhtfhky.mongodb.net/ICS', {  
-    useNewUrlParser: true, useUnifiedTopology: true })
+//connect mongodb to atlas
+const connectToDatabase = async () => {
+  try {
+      await mongoose.connect('mongodb+srv://sobaybay:c2ozgaZZKY1NdPfZ@cluster0.lhtfhky.mongodb.net/ICS', {  
+          useNewUrlParser: true,
+          useUnifiedTopology: true
+      });
+      console.log('Connected to MongoDB');
+  } catch (error) {
+      console.error('Error connecting to MongoDB:', error);
+  }
+};
 
+connectToDatabase();
 
 // Subject model
 const Student = mongoose.model('students', {
-    stdnum: Number,
-    fname: String,
-    lname: String,
-    age: Number
-  })
+  stdnum: String,
+  fname: String,
+  lname: String,
+  age: Number
+  }, 'studentData')
 
-// results here will always be an array, containing all documents 
-let data = await Student.find({});
-console.log(data);
-
-// the result parameter will contain a single object (the first matching document found
-// if no matching document was found, result will be null
-data = await Student.findOne({ fname: "Peter", lname: "Parker" });
-console.log(data);
-
+export default {Student};
