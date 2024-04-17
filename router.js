@@ -6,10 +6,10 @@ import controller from './controller.js'
 const router = express.Router();
 
 //different routes 
-router.post('save-student',controller.saveStudent);
-router.post('update',controller.updateStudent);
-router.post('remove-user',controller.removeUser);
-router.post('remove-all-users',controller.removeAllUsers);
+router.post('/save-student',controller.saveStudent);
+router.post('/update',controller.updateStudent);
+router.post('/remove-user',controller.removeUser);
+router.post('/remove-all-users',controller.removeAllUsers);
 
 router.get('/user',controller.getUsers);
 router.get('/members',controller.getMembers);
